@@ -1,0 +1,2 @@
+gcc -o poissonv3 poisson_SAR.c -lm 
+
