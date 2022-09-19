@@ -837,7 +837,7 @@ int	poisson_012_gap( int3 s_0, int3 z, int ***v3d, float ld, float w, float sine
 
 int	main_1d( int argc, char** argv )
 {
-
+	
 	int3	i_0;
 	int3	z;
 	float	seed = atof( argv[2] );  //  initial seed     //
@@ -882,9 +882,34 @@ int	main_1d( int argc, char** argv )
 
 	} while ( (k <= p*(1-tol)) || (k >= p*(1+tol)) ); // try until correct number points to be acquired found //
 
+	char a[k][32];
+	char point[32];
+	int index=0;
 //  print the data on standard output //
 /*	printf("# number of points = %d\n", k);i*/
-	for ( kk = 0 ; kk < k ; kk++ ) printf( "%d\n", v[kk] );
+	for ( kk = 0 ; kk < k ; kk++ ) {
+		/*printf( "%d\n", v[kk] );*/
+		sprintf(point, "%4d\n", v[kk]);
+		strcpy(a[index], point);
+		index++;
+	}
+
+	int pool[index];	
+	int li = 0;
+	for (li = 0 ; li < index ; li++ ) {
+	        pool[li] = li;
+        }
+
+	if (atoi(argv[9]) == 1) {
+		shuffle(pool, index);
+	}
+
+	int run = 0 ;
+	for ( run = 0 ; run < index ; run++ ) {
+		int temp = pool[run];
+		printf("%s", a[pool[run]]);
+//		printf("%i\n", pool[run]);
+	}
 
 	return( 0 );
 }
