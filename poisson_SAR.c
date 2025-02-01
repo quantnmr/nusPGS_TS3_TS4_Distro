@@ -1089,14 +1089,29 @@ int	main( int argc, char** argv )
 {
 	int	status;
 
-	int numdim = atoi(argv[1]);
-
-
 	if ( argc != 10 ) {
-		fprintf( stderr, "Wrong number of arguments. I should tell you how the arguments work, but I wont\n" );
-		exit( -1 );
+		fprintf( stderr, "Wrong number of arguments (%d provided, 9 required).\n\n", argc-1);
+		
+		fprintf( stderr, "Expected arguments:\n");
+		fprintf( stderr, "1) number of NUS dimensions (1, 2, or 3)\n");
+		fprintf( stderr, "2) seed num (0 means seed based on execution time)\n");
+		fprintf( stderr, "3) sine portion (2, 1 or 0. 1 and 0 are not practical)\n");
+		fprintf( stderr, "4) number of sampled points\n");
+		fprintf( stderr, "5) tolerance (1 = 100%%)\n");
+		fprintf( stderr, "6) total size of dimension 1 (the full range)\n");
+		fprintf( stderr, "7) total size of dimension 2 (the full range)\n");
+		fprintf( stderr, "8) total size of dimension 3 (the full range)\n");
+		fprintf( stderr, "9) 0 = in order, 1 = shuffled\n\n");
+		
+		fprintf( stderr, "Received arguments:\n");
+		fprintf( stderr, "0) %s (program name)\n", argv[0]);
+		for (int i = 1; i < argc; i++) {
+			fprintf( stderr, "%d) %s\n", i, argv[i]);
 		}
+		exit( -1 );
+	}
 	else {
+		int numdim = atoi(argv[1]);
 
 		switch ( numdim ) {
 			case 1 : { status = main_1d( argc, argv ); break; }
