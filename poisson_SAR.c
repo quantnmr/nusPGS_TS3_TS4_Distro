@@ -1105,7 +1105,8 @@ int	main( int argc, char** argv )
 		
 		fprintf( stderr, "Received arguments:\n");
 		fprintf( stderr, "0) %s (program name)\n", argv[0]);
-		for (int i = 1; i < argc; i++) {
+		int i;  // Declaration at start of block
+		for (i = 1; i < argc; i++) {
 			fprintf( stderr, "%d) %s\n", i, argv[i]);
 		}
 		exit( -1 );
