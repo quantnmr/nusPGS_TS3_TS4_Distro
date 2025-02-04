@@ -1089,8 +1089,8 @@ int	main( int argc, char** argv )
 {
 	int	status;
 
-	if ( argc != 10 && argc != 11 ) {
-		fprintf( stderr, "Wrong number of arguments (%d provided, 9 or 10 required).\n\n", argc-1);
+	if ( argc != 10 ) {
+		fprintf( stderr, "Wrong number of arguments (%d provided, 9 required).\n\n", argc-1);
 		
 		fprintf( stderr, "Expected arguments:\n");
 		fprintf( stderr, "1) number of NUS dimensions (1, 2, or 3)\n");
@@ -1101,8 +1101,7 @@ int	main( int argc, char** argv )
 		fprintf( stderr, "6) total size of dimension 1 (the full range)\n");
 		fprintf( stderr, "7) total size of dimension 2 (the full range)\n");
 		fprintf( stderr, "8) total size of dimension 3 (the full range)\n");
-		fprintf( stderr, "9) 0 = in order, 1 = shuffled\n");
-		fprintf( stderr, "10) (optional) additional parameter\n\n");
+		fprintf( stderr, "9) 0 = in order, 1 = shuffled\n\n");
 		
 		fprintf( stderr, "Received arguments:\n");
 		fprintf( stderr, "0) %s (program name)\n", argv[0]);
