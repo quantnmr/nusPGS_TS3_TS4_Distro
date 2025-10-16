@@ -14,7 +14,7 @@ This software provides **Non-Uniform Sampling (NUS) Poisson Gap Sampling** for B
 
 If you have the repository URL, clone it:
 ```bash
-git clone https://github.com/nomadiq/nusPGS_TS3_TS4_Distro.git
+git clone https://github.com/quantnmr/nusPGS_TS3_TS4_Distro.git
 cd nusPGS_TS3_TS4_Distro
 ```
 
