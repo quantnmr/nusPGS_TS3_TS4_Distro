@@ -1,4 +1,4 @@
-# NUS Poisson Gap Sampling for TopSpin 3 & 4
+# NUS Poisson Gap Sampling for TopSpin 3 & 4 v4.0
 
 This software provides **Non-Uniform Sampling (NUS) Poisson Gap Sampling** for Bruker TopSpin 3.0+ and 4.0+ NMR spectrometers, reducing experimental time while maintaining spectral quality.
 
