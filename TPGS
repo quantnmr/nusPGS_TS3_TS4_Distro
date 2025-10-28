@@ -101,6 +101,7 @@ seed = 0;
 tolerance = 0.00001;
 normalization = 1;
 tranche_sampling = 0;
+shuffle_flag = 1;
 
 /** get some user input regarding how they want to sample **/
 /* (void)sprintf(text, "Random seed (0 means program selected)? \n");
@@ -185,8 +186,23 @@ if ( parmode == 1 ) {
 }
 
 /** Yallah Balla! **/
-(void)sprintf(text, "%s --ndim %i --seed %i --nsamples %i --tolerance %f --X %i --Y %i --Z %i --randomorder %i --normal %i --ts %i > %s", path, parmode, seed, td_sparse, tolerance, d_one, d_two, d_three, shuffle_flag, normalization, tranche_sampling, result);
+(void)sprintf(text, "%s --ndim %i --seed %i --nsamples %i --X %i --Y %i --Z %i --randomorder %i --normal %i --ts %i > %s", path, parmode, seed, td_sparse, d_one, d_two, d_three, shuffle_flag, normalization, tranche_sampling, result);
+/*GETINT(text, td_sparse);*/
 (void)system(text);
+
+/** check result of poisson **/
+(void)sprintf(infile,"%s.out", ACQUPATH(input) );
+
+
+fpi = fopen(infile,"rt");
+
+if ( fpi == NULL )
+   {
+   (void)sprintf(text,"cannot open input file:\n%s",infile);
+   STOPMSG(text);
+   }
+
+
 
 /** check output files **/
 
@@ -202,13 +218,10 @@ if ( fpo == NULL )
    (void)sprintf(text,"cannot open output file:\n%s",outfile);
    }
 
-
 /***** split points file *****/
-
 while( fgets(text, sizeof(text), fpi) != NULL )
    {
    cp = text;
-
    while( isspace(*cp) )
       {
       cp++;
@@ -265,20 +278,19 @@ while( fgets(text, sizeof(text), fpi) != NULL )
       }
    }
 
-
 (void)fclose(fpi);
 (void)fclose(fpo);
 
 
+
 /***** store parameters *****/
 
-STOREPAR("NUSLIST", nuslist)
+STOREPAR("NUSLIST", nuslist);
 
+STOREPAR("L 3", td_sparse*2 );
 
 if ( tranche_sampling == 1 )
    STOREPAR("L 3", td_max*2 );
-else
-   STOREPAR("L 3", td_sparse*2 );
 
 if ( parmode >= 2 )
    STOREPAR("L 13", 2 );
